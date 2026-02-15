@@ -4,6 +4,8 @@ import SignUp from './pages/onboarding/signup';
 import Login from './pages/onboarding/login';
 import ConnectPlatform from './pages/onboarding/connect-platform';
 import UploadChats from './pages/onboarding/upload-chats';
+import Dashboard from './pages/dashboard/Dashboard';
+import Settings from './pages/dashboard/Settings';
 import { useAuthStore } from './store/authStore';
 import { useEffect } from 'react';
 
@@ -24,6 +26,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/onboarding/connect-platform" element={<ConnectPlatform />} />
         <Route path="/onboarding/upload-chats" element={<UploadChats />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </BrowserRouter>
   );
