@@ -1,188 +1,252 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import LetterGlitch from '../../components/LetterGlitch';
+import AnimatedBackground from '../../components/AnimatedBackground';
+import '../../index.css';
+
+const featuresList = [
+    {
+        title: 'Learns Your Style',
+        description: 'Train the AI on your messaging style and communication patterns'
+    },
+    {
+        title: 'Auto-Responds',
+        description: 'Handles messages in your voice while you\'re away'
+    },
+    {
+        title: 'Extracts Insights',
+        description: 'Automatically discovers tasks and remembers important details'
+    }
+];
 
 export default function Welcome() {
     const navigate = useNavigate();
 
     return (
-        <div className="min-h-screen flex bg-black relative">
+        <div className="min-h-screen bg-black relative overflow-hidden">
+            {/* 3D Moving Background */}
+            <AnimatedBackground />
 
-            {/* Matrix Background - Full Screen */}
-            <div className="absolute inset-0">
-                <LetterGlitch
-                    glitchColors={['#0a3d2c', '#68ba4aff', '#37a15aff']}
-                    glitchSpeed={80}
-                    outerVignette={true}
-                    smooth={true}
-                />
-            </div>
+            {/* Main Content */}
+            <div className="relative z-10">
 
-            {/* Left Side - Branding (Now in Card) */}
-            <div className="hidden lg:flex lg:w-1/2 relative p-12">
-
-                {/* Glassmorphism Card for All Content */}
-                <div className="backdrop-blur-xl bg-black/60 border border-white/10 rounded-3xl p-10 flex flex-col justify-between w-full shadow-2xl">
-
-                    {/* Logo */}
-                    <div>
-                        <div className="flex items-center gap-3 text-white">
-                            <span className="text-2xl font-bold">AI Twin</span>
-                        </div>
-                    </div>
-
-                    {/* Main Message */}
-                    <div className="space-y-6">
-                        <h1 className="text-5xl font-bold text-white leading-tight">
-                            Your personal AI that texts like you
-                        </h1>
-                        <p className="text-xl text-gray-300 leading-relaxed">
-                            Train an AI on your messaging style. It responds as you, extracts tasks,
-                            and remembers important details automatically.
-                        </p>
-
-                        {/* Features */}
-                        <div className="space-y-3 pt-6">
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-lg bg-primary-500/30 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg className="w-4 h-4 text-primary-300" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="text-white font-semibold">Learns your style</p>
-                                    <p className="text-gray-400 text-sm">Continuous training on your conversations</p>
-                                </div>
+                {/* Hero Section */}
+                <section className="min-h-screen flex items-center justify-center px-4 py-20">
+                    <div className="max-w-4xl mx-auto text-center space-y-10 w-full">
+                        {/* Logo */}
+                        <div className="flex items-center justify-center gap-3 animate-fadeIn opacity-0" style={{ animationDelay: '0.2s' }}>
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                                <span className="text-2xl font-bold text-white">AT</span>
                             </div>
-
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-lg bg-primary-500/30 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg className="w-4 h-4 text-primary-300" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="text-white font-semibold">Auto-responds</p>
-                                    <p className="text-gray-400 text-sm">Handles messages in your voice</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-lg bg-primary-500/30 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg className="w-4 h-4 text-primary-300" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="text-white font-semibold">Extracts insights</p>
-                                    <p className="text-gray-400 text-sm">Tasks and memories automatically</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Social Proof */}
-                    <div>
-                        <div className="flex items-center gap-3 text-gray-300 text-sm">
-                            <div className="flex -space-x-2">
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-secondary-400 border-2 border-black/50"></div>
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-secondary-400 to-accent-400 border-2 border-black/50"></div>
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent-400 to-primary-400 border-2 border-black/50"></div>
-                            </div>
-                            <span>Join 200+ users already using AI Twin</span>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-            {/* Right Side - Auth Form */}
-            <div className="flex-1 flex items-center justify-center p-8 relative">
-                <div className="w-full max-w-md space-y-8 backdrop-blur-xl bg-black/60 p-10 rounded-2xl border border-white/10 shadow-2xl">
-
-                    {/* Mobile Logo */}
-                    <div className="lg:hidden flex items-center gap-3 text-white mb-8">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
-                            <span className="text-xl font-bold">AT</span>
-                        </div>
-                        <span className="text-2xl font-bold">AI Twin</span>
-                    </div>
-
-                    {/* Heading */}
-                    <div className="space-y-2">
-                        <h2 className="text-3xl font-bold text-white">
-                            Get started
-                        </h2>
-                    </div>
-
-                    {/* CTA Buttons */}
-                    <div className="space-y-4">
-                        <button
-                            onClick={() => navigate('/onboarding/signup')}
-                            className="w-full px-6 py-3.5 bg-white text-black font-semibold rounded-xl hover:bg-gray-100 transition-all duration-200"
-                        >
-                            Sign up with email
-                        </button>
-
-                        <div className="relative">
-                            <div className="absolute inset-0 flex items-center">
-                                <div className="w-full border-t border-gray-700"></div>
-                            </div>
-                            <div className="relative flex justify-center text-sm">
-                                <span className="px-4 bg-transparent text-gray-500">Or continue with</span>
-                            </div>
+                            <span className="text-3xl font-bold text-white">AI Twin</span>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-3">
-                            <button
-                                className="flex items-center justify-center gap-2 px-4 py-3 bg-white/10 border border-white/10 rounded-xl hover:bg-white/20 transition-colors text-white"
-                                onClick={() => alert('Google OAuth - Coming soon!')}
+                        {/* Main Headline with Glitch */}
+                        <div className="space-y-6 animate-fadeInUp opacity-0" style={{ animationDelay: '0.4s' }}>
+                            <h1
+                                className="glitch text-6xl md:text-7xl font-bold text-white leading-tight"
+                                data-text="Your Personal AI That Behaves Like You"
                             >
-                                <svg className="w-5 h-5" viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                                    <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                                    <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
-                                    <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-                                </svg>
-                                <span>Google</span>
-                            </button>
-
-                            <button
-                                className="flex items-center justify-center gap-2 px-4 py-3 bg-white/10 border border-white/10 rounded-xl hover:bg-white/20 transition-colors text-white"
-                                onClick={() => alert('Apple OAuth - Coming soon!')}
-                            >
-                                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-                                </svg>
-                                <span>Apple</span>
-                            </button>
+                                Your Personal AI That Behaves Like You
+                            </h1>
+                            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-textShimmer">
+                                Train an AI on your messaging style. It responds as you, extracts tasks, and remembers important details automatically.
+                            </p>
                         </div>
-                    </div>
 
-                    {/* Sign In Link */}
-                    <div className="text-center pt-6">
-                        <p className="text-gray-400">
-                            Already have an account?{' '}
+                        {/* CTA Buttons */}
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8 animate-fadeInUp opacity-0" style={{ animationDelay: '0.6s' }}>
+                            <button
+                                onClick={() => navigate('/onboarding/signup')}
+                                className="px-10 py-4 bg-white text-black font-semibold rounded-xl hover:bg-gray-100 hover:scale-105 transition-all duration-300 text-lg shadow-lg hover:shadow-xl animate-pulse-glow"
+                            >
+                                Get Started Free
+                            </button>
                             <button
                                 onClick={() => navigate('/login')}
-                                className="text-primary-400 hover:text-primary-300 font-medium transition-colors"
+                                className="px-10 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 hover:scale-105 hover:border-primary-500/50 transition-all duration-300 text-lg animate-border-glow"
                             >
-                                Sign in
+                                Sign In
                             </button>
-                        </p>
+                        </div>
+
+                        {/* Social Proof */}
+                        <div className="pt-8 animate-fadeIn opacity-0" style={{ animationDelay: '0.8s' }}>
+                            <div className="flex items-center justify-center gap-4">
+                                <div className="flex -space-x-3">
+                                    {[1, 2, 3, 4].map((_, i) => (
+                                        <div
+                                            key={i}
+                                            className="w-10 h-10 rounded-full border-2 border-black bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center text-white text-xs font-bold hover:scale-110 hover:-translate-y-2 transition-all duration-300 cursor-pointer animate-bounce"
+                                            style={{ animationDelay: `${i * 0.1}s` }}
+                                        >
+                                            {String.fromCharCode(65 + i)}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <p className="text-gray-300 mt-4 animate-textWave">Join 200+ users already using AI Twin</p>
+                        </div>
                     </div>
+                </section>
 
-                    {/* Terms */}
-                    <p className="text-xs text-gray-500 text-center">
-                        By continuing, you agree to our{' '}
-                        <a href="#" className="underline hover:text-gray-400">Terms</a>
-                        {' '}and{' '}
-                        <a href="#" className="underline hover:text-gray-400">Privacy Policy</a>
-                    </p>
+                {/* Features Section */}
+                <section className="py-20 px-4 bg-black/40 backdrop-blur-xl border-t border-white/10">
+                    <div className="max-w-6xl mx-auto">
+                        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white glitch-text" data-text="Why Choose AI Twin?">
+                            Why Choose AI Twin?
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {featuresList.map((feature, index) => (
+                                <div
+                                    key={index}
+                                    className="backdrop-blur-xl bg-black/40 p-8 rounded-2xl border border-white/10 hover:border-primary-500/50 hover:bg-black/60 transition-all duration-500 text-center space-y-4 animate-scaleIn opacity-0 group cursor-pointer"
+                                    style={{
+                                        animationDelay: `${0.2 + index * 0.15}s`,
+                                        transformOrigin: 'center bottom'
+                                    }}
+                                >
+                                    <div className="w-12 h-12 rounded-lg bg-primary-500/30 flex items-center justify-center mx-auto group-hover:scale-110 group-hover:bg-primary-500/50 transition-all duration-300">
+                                        <svg className="w-6 h-6 text-primary-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="text-white font-semibold text-xl group-hover:text-primary-400 transition-colors duration-300 animate-titlePop">{feature.title}</h3>
+                                    <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">{feature.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
 
-                </div>
+                {/* How It Works Section */}
+                <section className="py-20 px-4 border-t border-white/10">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white glitch-text" data-text="How It Works">
+                            How It Works
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {[
+                                { step: '1', title: 'Upload Your Chats', description: 'Share your conversations to train your AI Twin' },
+                                { step: '2', title: 'AI Learns Your Style', description: 'Machine learning models analyze your patterns' },
+                                { step: '3', title: 'Start Auto-Responding', description: 'Your AI Twin handles messages in your voice' }
+                            ].map((item, index) => (
+                                <div key={index} className="text-center space-y-4 animate-slideInUp opacity-0" style={{ animationDelay: `${0.2 + index * 0.2}s` }}>
+                                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center mx-auto hover:scale-110 hover:shadow-lg hover:shadow-primary-500/50 transition-all duration-300 cursor-pointer animate-float" style={{ animationDelay: `${index * 0.3}s` }}>
+                                        <span className="text-2xl font-bold text-white">{item.step}</span>
+                                    </div>
+                                    <h3 className="text-xl font-semibold text-white hover:text-primary-300 transition-colors duration-300 animate-titlePop">{item.title}</h3>
+                                    <p className="text-gray-400 hover:text-gray-300 transition-colors duration-300">{item.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Testimonials Section */}
+                <section className="py-20 px-4 bg-black/40 backdrop-blur-xl border-t border-white/10">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white glitch-text" data-text="What Users Say">
+                            What Users Say
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {[
+                                { name: 'Sarah Chen', role: 'Content Creator', quote: 'AI Twin saves me hours every week handling messages while I focus on creating.' },
+                                { name: 'Alex Rodriguez', role: 'Entrepreneur', quote: 'Finally, a tool that truly understands my communication style. Game-changer!' }
+                            ].map((testimonial, index) => (
+                                <div
+                                    key={index}
+                                    className="backdrop-blur-xl bg-black/40 p-8 rounded-2xl border border-white/10 space-y-4 hover:border-primary-500/50 hover:bg-black/60 transition-all duration-500 animate-slideInUp opacity-0 group"
+                                    style={{ animationDelay: `${0.2 + index * 0.2}s` }}
+                                >
+                                    <p className="text-gray-300 text-lg italic group-hover:text-gray-200 transition-colors duration-300 animate-textShimmer">"{testimonial.quote}"</p>
+                                    <div className="pt-4 border-t border-white/10">
+                                        <p className="text-white font-semibold group-hover:text-primary-400 transition-colors duration-300 animate-titlePop">{testimonial.name}</p>
+                                        <p className="text-gray-400 text-sm">{testimonial.role}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Security Section */}
+                <section className="py-20 px-4 border-t border-white/10">
+                    <div className="max-w-4xl mx-auto text-center space-y-8">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white glitch-text" data-text="Your Data. Your Control.">
+                            Your Data. Your Control.
+                        </h2>
+                        <p className="text-xl text-gray-300 animate-textShimmer">
+                            We take privacy seriously. Your conversations are encrypted, and you control exactly what data is used.
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
+                            {[
+                                { icon: '🔒', title: 'End-to-End Encrypted', desc: 'Your data is encrypted in transit and at rest' },
+                                { icon: '👤', title: 'You Control Everything', desc: 'Decide what data the AI can access' },
+                                { icon: '⚖️', title: 'GDPR Compliant', desc: 'Full compliance with data protection laws' }
+                            ].map((item, index) => (
+                                <div key={index} className="space-y-3 animate-scaleIn opacity-0 hover:scale-105 transition-transform duration-300" style={{ animationDelay: `${0.3 + index * 0.15}s` }}>
+                                    <div className="text-5xl filter drop-shadow-lg hover:drop-shadow-xl transition-all duration-300 animate-float" style={{ animationDelay: `${index * 0.2}s` }}>{item.icon}</div>
+                                    <h3 className="text-lg font-semibold text-white animate-titlePop">{item.title}</h3>
+                                    <p className="text-gray-400">{item.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Final CTA Section */}
+                <section className="py-20 px-4 border-t border-white/10 text-center">
+                    <div className="max-w-2xl mx-auto space-y-8">
+                        <div className="animate-fadeInUp opacity-0" style={{ animationDelay: '0.2s' }}>
+                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 glitch-text" data-text="Ready to create your AI Twin?">
+                                Ready to create your AI Twin?
+                            </h2>
+                            <p className="text-xl text-gray-300 animate-textWave">
+                                Join 200+ creators who are automating their conversations
+                            </p>
+                        </div>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp opacity-0" style={{ animationDelay: '0.4s' }}>
+                            <button
+                                onClick={() => navigate('/onboarding/signup')}
+                                className="px-10 py-4 bg-white text-black font-semibold rounded-xl hover:bg-gray-100 hover:scale-105 hover:shadow-xl transition-all duration-300 text-lg active:scale-95 animate-pulse-glow"
+                            >
+                                Get Started Free
+                            </button>
+                            <button
+                                onClick={() => navigate('/onboarding/upload-chats')}
+                                className="px-10 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 hover:scale-105 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/30 transition-all duration-300 text-lg active:scale-95 animate-border-glow"
+                            >
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Footer */}
+                <footer className="py-12 px-4 border-t border-white/10 bg-black/80 animate-fadeIn opacity-0" style={{ animationDelay: '0.8s' }}>
+                    <div className="max-w-6xl mx-auto">
+                        <div className="flex flex-col sm:flex-row justify-between items-center gap-8 mb-8">
+                            <div className="flex items-center gap-3 group cursor-pointer">
+                                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                                    <span className="text-lg font-bold text-white">AT</span>
+                                </div>
+                                <span className="text-xl font-bold text-white group-hover:text-primary-300 transition-colors duration-300">AI Twin</span>
+                            </div>
+                            <div className="flex gap-6 flex-wrap justify-center">
+                                <a href="#" className="text-gray-400 hover:text-white hover:scale-105 transition-all duration-300">Privacy Policy</a>
+                                <a href="#" className="text-gray-400 hover:text-white hover:scale-105 transition-all duration-300">Terms of Service</a>
+                                <a href="#" className="text-gray-400 hover:text-white hover:scale-105 transition-all duration-300">Contact</a>
+                            </div>
+                        </div>
+                        <div className="text-center text-gray-500 text-sm border-t border-white/10 pt-8">
+                            <p>&copy; 2026 AI Twin. All rights reserved.</p>
+                        </div>
+                    </div>
+                </footer>
+
             </div>
 
+            {/* styles moved to src/index.css to avoid JSX parsing issues */}
         </div>
     );
 }
